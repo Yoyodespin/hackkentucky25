@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProgramSelector from './components/ProgramSelector';
@@ -242,49 +243,81 @@ const ProgramContent = ({ program, stateFilter, sortBy, selectedCareer, onCareer
   );
 };
 
-function App() {
-  const { tradePrograms, loading, error } = useTradePrograms();
+const ProgramPage = () => {
+  const { programSlug } = useParams();
+  const { tradePrograms: programs } = useTradePrograms();
   const [selectedProgram, setSelectedProgram] = useState(null);
-  const [previousProgram, setPreviousProgram] = useState(null);
-  const [selectedCareer, setSelectedCareer] = useState(null);
   const [stateFilter, setStateFilter] = useState('');
-  const [sortBy, setSortBy] = useState('');
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [sortBy, setSortBy] = useState('rating');
+  const [selectedCareer, setSelectedCareer] = useState(null);
   const [expandedSchoolId, setExpandedSchoolId] = useState(null);
 
-  // Set initial selected program once data is loaded
-  React.useEffect(() => {
-    if (tradePrograms && tradePrograms.length > 0 && !selectedProgram) {
-      setSelectedProgram(tradePrograms[0]);
+  useEffect(() => {
+    if (programs) {
+      if (programSlug) {
+        // Try to find program by exact slug match first
+        let program = programs.find(p => 
+          p.title.toLowerCase().replace(/\s+/g, '-') === programSlug
+        );
+        
+        // If no exact match, try to find program by partial match
+        if (!program) {
+          program = programs.find(p => 
+            p.title.toLowerCase().includes(programSlug.replace(/-/g, ' '))
+          );
+        }
+        
+        if (program) {
+          setSelectedProgram(program);
+          return;
+        }
+      }
+      
+      // Default to first program if no match or no slug
+      setSelectedProgram(programs[0]);
     }
-  }, [tradePrograms, selectedProgram]);
+  }, [programs, programSlug]);
 
   const handleProgramChange = (program) => {
-    if (program.title === selectedProgram?.title) return;
-    
-    setIsTransitioning(true);
-    setPreviousProgram(selectedProgram);
-    
-    // Start exit animation
-    setTimeout(() => {
-      setSelectedProgram(program);
-      setSelectedCareer(null);
-      setStateFilter('');
-      setSortBy('');
-      setExpandedSchoolId(null);
-      
-      // Complete transition after new content is loaded
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsTransitioning(false);
-        });
-      });
-    }, 300); // Reduced from 500ms to 300ms to match CSS timing
+    const slug = program.title.toLowerCase().replace(/\s+/g, '-');
+    window.history.pushState({}, '', `/${slug}`);
+    setSelectedProgram(program);
+    setSelectedCareer(null);
+    setExpandedSchoolId(null);
   };
 
-  const handleSchoolToggle = (schoolId) => {
-    setExpandedSchoolId(expandedSchoolId === schoolId ? null : schoolId);
-  };
+  if (!programs) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  return (
+    <>
+      <Header />
+      <ProgramSelector
+        programs={programs}
+        selectedProgram={selectedProgram}
+        onProgramChange={handleProgramChange}
+      />
+      {selectedProgram && (
+        <ProgramContent
+          program={selectedProgram}
+          stateFilter={stateFilter}
+          sortBy={sortBy}
+          selectedCareer={selectedCareer}
+          onCareerSelect={setSelectedCareer}
+          onStateFilterChange={setStateFilter}
+          onSortByChange={setSortBy}
+          expandedSchoolId={expandedSchoolId}
+          onSchoolToggle={setExpandedSchoolId}
+        />
+      )}
+      <Footer />
+    </>
+  );
+};
+
+const App = () => {
+  const { loading, error } = useTradePrograms();
 
   if (loading) {
     return (
@@ -310,71 +343,14 @@ function App() {
     );
   }
 
-  if (!tradePrograms || tradePrograms.length === 0) {
-    return (
-      <div className="app">
-        <Header />
-        <div className="error-container">
-          <div className="error">No programs available</div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
-  if (!selectedProgram) {
-    return (
-      <div className="app">
-        <Header />
-        <div className="loading-container">
-          <div className="loading">Initializing programs...</div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
-    <div className="app">
-      <Header />
-      <ProgramSelector
-        programs={tradePrograms}
-        selectedProgram={selectedProgram}
-        onProgramChange={handleProgramChange}
-      />
-      <div className="program-content-container">
-        {previousProgram && isTransitioning && (
-          <div className="program-content exit">
-            <ProgramContent
-              program={previousProgram}
-              stateFilter={stateFilter}
-              sortBy={sortBy}
-              selectedCareer={selectedCareer}
-              onCareerSelect={setSelectedCareer}
-              onStateFilterChange={setStateFilter}
-              onSortByChange={setSortBy}
-              expandedSchoolId={expandedSchoolId}
-              onSchoolToggle={handleSchoolToggle}
-            />
-          </div>
-        )}
-        <div className={`program-content ${isTransitioning ? 'enter' : 'active'}`}>
-          <ProgramContent
-            program={selectedProgram}
-            stateFilter={stateFilter}
-            sortBy={sortBy}
-            selectedCareer={selectedCareer}
-            onCareerSelect={setSelectedCareer}
-            onStateFilterChange={setStateFilter}
-            onSortByChange={setSortBy}
-            expandedSchoolId={expandedSchoolId}
-            onSchoolToggle={handleSchoolToggle}
-          />
-        </div>
-      </div>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ProgramPage />} />
+        <Route path="/:programSlug/*" element={<ProgramPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
