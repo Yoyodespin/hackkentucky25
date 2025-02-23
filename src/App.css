@@ -1,0 +1,1485 @@
+/* Purple Theme CSS */
+:root {
+  --main-purple: #6B46C1;
+  --light-purple: #EBF4FF;
+  --dark-purple: #44337A;
+  --hover-purple: #553C9A;
+  --dark: #1A202C;
+  --gray: #718096;
+  --light-gray: #F7FAFC;
+  --border: #E2E8F0;
+  --font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --success: #34C759;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-purple);
+  color: white;
+  line-height: 1.5;
+}
+
+/* Header Styles */
+.linkedin-header {
+  background-color: white;
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 0;
+  font-weight: 400;
+}
+
+.back-button:hover {
+  color: var(--dark);
+}
+
+.back-button .icon {
+  font-size: 16px;
+}
+
+.logo {
+  color: var(--main-purple);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  gap: 12px;
+}
+
+.help-button, .contact-button {
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.help-button {
+  background: white;
+  border: 1px solid var(--main-purple);
+  color: var(--main-purple);
+}
+
+.help-button:hover {
+  background: var(--light-purple);
+}
+
+.contact-button {
+  background: var(--main-purple);
+  border: none;
+  color: white;
+}
+
+.contact-button:hover {
+  background: var(--hover-purple);
+}
+
+/* Program Selector Styles */
+.program-selector {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+  padding: 12px 0;
+}
+
+.selector-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.selector-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.program-pills {
+  display: flex;
+  gap: 12px;
+  padding: 0 40px;
+}
+
+.program-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  color: var(--gray);
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.program-pill:hover {
+  border-color: var(--main-purple);
+  color: var(--main-purple);
+  background: var(--light-purple);
+}
+
+.program-pill.active {
+  background: var(--main-purple);
+  color: white;
+  border-color: var(--main-purple);
+}
+
+.program-icon {
+  font-size: 16px;
+}
+
+.school-count {
+  color: inherit;
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+}
+
+.fade-overlay.left {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.fade-overlay.right {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+/* Schools Page Styles */
+.schools-page {
+  max-width: 1128px;
+  margin: 116px auto 0;
+  padding: 24px;
+}
+
+.program-header {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+
+.program-title {
+  margin-bottom: 16px;
+}
+
+.program-title h1 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.program-description {
+  color: var(--dark);
+  line-height: 1.5;
+  margin: 16px 0;
+  font-weight: 400;
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stat-card {
+  background: var(--light-purple);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: var(--main-purple);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.stat-card p {
+  margin: 4px 0 0;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  margin: 0;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: white;
+  color: var(--dark);
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.program-schools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  padding: 16px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.school-card {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 6px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.school-card.expanded {
+  padding: 14px;
+  margin: 4px -8px;
+  width: calc(100% + 16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.school-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.school-info h4 {
+  margin: 0;
+  color: var(--main-purple);
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.school-info .location {
+  margin: 2px 0 0;
+  color: var(--gray);
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+.school-info .tuition {
+  color: var(--dark);
+  font-size: 14px;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.school-info .tuition svg {
+  color: var(--main-purple);
+}
+
+.school-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #e7a33e;
+  font-weight: 600;
+}
+
+.accredited-badge {
+  margin-top: 6px;
+  color: var(--success);
+  font-size: 0.8em;
+}
+
+.apply-button {
+  padding: 6px 16px;
+  background: var(--main-purple);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.apply-button:hover {
+  background: var(--hover-purple);
+}
+
+.program-details {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.details-section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.details-section h3 {
+  margin: 0 0 16px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.career-list, .cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.career-item {
+  background-color: var(--light-purple);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-weight: 400;
+}
+
+.career-item.selected {
+  border-color: var(--main-purple);
+  background-color: white;
+}
+
+.career-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.career-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--main-purple);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.career-salary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray);
+  font-size: 14px;
+  margin-left: 24px;
+  font-weight: 300;
+}
+
+.career-salary .icon {
+  color: var(--main-purple);
+  opacity: 0.8;
+}
+
+.roi-item {
+  background-color: var(--light-purple);
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: var(--main-purple);
+  font-weight: 500;
+}
+
+.roi-item .icon {
+  color: var(--main-purple);
+}
+
+.roi-info {
+  background: var(--light-purple);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 12px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.roi-info.changing {
+  animation: roiChange 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+@keyframes roiChange {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.roi-info-wrapper {
+  height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.roi-info-wrapper.show {
+  height: auto;
+  opacity: 1;
+  transform: translateY(0);
+  margin: 12px 0;
+}
+
+.roi-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--main-purple);
+  font-size: 0.85em;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.roi-icon {
+  font-size: 1em;
+}
+
+.roi-value {
+  display: flex;
+  flex-direction: column;
+  color: var(--dark);
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.roi-subtitle {
+  font-size: 0.75em;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.section-hint {
+  color: var(--gray);
+  font-size: 14px;
+  margin: -8px 0 16px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* LinkedIn Card Styles */
+.linkedin-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.school-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+.header-info h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.school-name {
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--dark);
+  font-weight: 400;
+}
+
+.key-info {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.info-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: var(--light-purple);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--main-purple);
+  font-weight: 300;
+}
+
+.extended-info {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.section h4 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.school-item {
+  background-color: var(--light-purple);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.school-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.school-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #e7a33e;
+  font-weight: 600;
+}
+
+.accredited-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background-color: var(--light-purple);
+  color: var(--main-purple);
+  border-radius: 12px;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.career-list, .cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.career-item, .cert-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background-color: var(--light-purple);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--main-purple);
+  font-weight: 400;
+}
+
+.card-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+}
+
+.details-button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--main-purple);
+  background: white;
+  color: var(--main-purple);
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.details-button:hover {
+  background-color: var(--light-purple);
+}
+
+.apply-button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: var(--main-purple);
+  color: white;
+  border-radius: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.apply-button:hover {
+  background-color: var(--hover-purple);
+}
+
+/* School Card Certifications */
+.cert-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 10px;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
+  color: var(--dark);
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-toggle:hover {
+  background: var(--light-gray);
+}
+
+.cert-toggle.active {
+  border-color: var(--main-purple);
+  color: var(--main-purple);
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.certifications-container {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.certifications-content {
+  padding: 8px 0;
+}
+
+.certification-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 0.85em;
+  color: var(--dark);
+}
+
+.cert-icon {
+  color: var(--main-purple);
+  font-size: 0.9em;
+}
+
+.certification-item .bullet {
+  color: var(--main-purple);
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .header-content {
+    padding: 0 12px;
+  }
+
+  .search-box input {
+    width: 140px;
+  }
+
+  .nav-item span {
+    display: none;
+  }
+}
+
+/* Search Container Styles */
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-main {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-main input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    min-width: 0;
+    font-weight: 400;
+}
+
+.search-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.search-button:hover {
+    background-color: #c0392b;
+}
+
+.filter-toggle {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    align-self: center;
+    font-weight: 400;
+}
+
+.filter-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-filters {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.filter-group select {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: white;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+/* No Results Styles */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.no-results h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.no-results p {
+    color: #666;
+    font-weight: 400;
+}
+
+/* Original Styles */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.program-card {
+  margin-bottom: 24px;
+}
+
+.program-info {
+  width: 100%;
+}
+
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.school-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.school-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.school-info {
+  flex: 1;
+}
+
+.school-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.school-info .location {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+.school-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #e7a33e;
+  font-weight: 600;
+}
+
+.school-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.school-card .apply-button {
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 16px;
+  font-weight: 500;
+}
+
+.program-details {
+  margin-top: 24px;
+}
+
+.program-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  color: var(--gray);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.program-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.program-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.program-card-content {
+    padding: 1.5rem;
+}
+
+.program-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.program-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.program-info {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.program-info p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.program-info p:last-child {
+    margin-bottom: 0;
+}
+
+.details-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.details-button:hover {
+    background-color: #2980b9;
+}
+
+.extended-details {
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+}
+
+.school-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.school-item h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.school-item p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.rating {
+    color: #e67e22;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.careers-section,
+.certifications-section {
+    margin-top: 1.5rem;
+}
+
+.careers-section h4,
+.certifications-section h4,
+.schools-section h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.careers-section ul,
+.certifications-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.careers-section li,
+.certifications-section li {
+    background-color: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Animation keyframes */
+@keyframes slideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.program-card {
+  animation: slideUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.program-card.exit {
+  animation: slideDown 0.5s ease-in forwards;
+}
+
+/* Swipe Animation for Program Selection */
+.program-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #6b46c1;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.program-content {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.program-content.active {
+  pointer-events: all;
+  position: relative;
+}
+
+.program-header,
+.program-details,
+.schools-section {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transform: translateY(0);
+  opacity: 1;
+  background: white;
+  border-radius: 12px;
+  margin: 0 20px 20px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+/* Exit animations */
+.slide-exit .program-header {
+  transform: translateY(120vh);
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.slide-exit .program-details {
+  transform: translateY(120vh);
+  opacity: 0;
+  transition-delay: 0.1s;
+}
+
+.slide-exit .schools-section {
+  transform: translateY(120vh);
+  opacity: 0;
+  transition-delay: 0.2s;
+}
+
+/* Enter animations */
+.slide-enter .program-header {
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+
+.slide-enter .program-details {
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+
+.slide-enter .schools-section {
+  transform: translateY(-20vh);
+  opacity: 0;
+}
+
+/* Current state animations */
+.slide-current .program-header {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.slide-current .program-details {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.slide-current .schools-section {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.schools-page {
+  width: 100%;
+}
+
+.program-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Typography Adjustments */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+p, span, button {
+  font-weight: 400;
+}
+
+.meta-item span,
+.location,
+.certification-item span {
+  font-weight: 300;
+}
+
+.stat-card h3 {
+  font-weight: 700;
+}
+
+.apply-button,
+.certifications-toggle {
+  font-weight: 500;
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.loading,
+.error {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.loading {
+  background-color: #f0f9ff;
+  color: #0369a1;
+}
+
+.error {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+/* Program Content Animation */
+.program-content-container {
+  position: relative;
+  min-height: 800px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.program-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+  will-change: transform, opacity;
+}
+
+.program-content.exit {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+}
+
+.program-content.enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.program-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1;
+}
+
+footer {
+  background-color: var(--dark-purple);
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.program-schools-section {
+  margin-top: 32px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.program-schools-header {
+  padding: 0 20px;
+}
+
+.program-schools-header h3 {
+  margin: 0 0 16px 0;
+  color: var(--dark);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.filters-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  color: var(--dark);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.filter-group select {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: var(--dark);
+  background-color: white;
+}
